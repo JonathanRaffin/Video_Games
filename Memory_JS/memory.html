@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8"/>
+    <title>Memory en Javascript</title>
+    <meta name="author" content="22008532" />
+    <link rel="stylesheet" type="text/css" href="memory.css">
+
+    <script type="text/javascript" src="memory.js"></script>
+
+</head>
+<body>
+<div id="wrapper">
+    <section class="controles">
+        <h2>Memory</h2>
+        <section class="sauvegarde">
+            <label> Meilleures Scores </label>
+            <label id = "mscore"> 0 </label>
+            <button id="sauv">Sauvegarder la partie.</button>
+        </section>
+        <section class="nb">
+            <label> Coups </label>
+            <label id="coups"> 0 </label>
+            <label> Score </label>
+            <label id="score"> 0 </label>
+            <label> Paires trouvées </label>
+            <label id="paires"> 0 </label>
+        </section>  
+        <section class="grille">
+            <label> Nombres de colones: </label>
+            <input  id="infoC" size="2">
+            <label> Nombres de lignes: </label> 
+            <input id="infoL" size="2" >
+            <button id="game">Démarer une partie.</button>
+        </section>    
+    </section>
+
+    <div id="jeu"></div>
+</div>
+<script>
+    // initialiser les capteurs d'évènements ici
+    // et écrire les fonctions callback dans memory.js
+    "use strict";
+    debutpartie();
+
+</script>
+
+</body>
+</html>
