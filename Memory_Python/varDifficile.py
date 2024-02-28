@@ -1,0 +1,92 @@
+import pygame as py
+import var
+
+posDifficile = py.Rect(433,411, var.dimensionModeW, var.dimensionModeH)
+
+DcardW = 75
+DcardH = 78
+
+fond_cardD = py.image.load("img/card/Difficile/fond_cardD.png")
+fondD = py.image.load("img/card/fondD.png")
+
+aa = py.image.load("img/card/Difficile/aa.png")
+ba = py.image.load("img/card/Difficile/ba.png")
+ca = py.image.load("img/card/Difficile/ca.png")
+da = py.image.load("img/card/Difficile/da.png")
+ga = py.image.load("img/card/Difficile/ga.png")
+ma = py.image.load("img/card/Difficile/ma.png")
+na = py.image.load("img/card/Difficile/na.png")
+pa = py.image.load("img/card/Difficile/pa.png")
+ag = py.image.load("img/card/Difficile/ag.png")
+bg = py.image.load("img/card/Difficile/bg.png")
+cg = py.image.load("img/card/Difficile/cg.png")
+dg = py.image.load("img/card/Difficile/dg.png")
+gg = py.image.load("img/card/Difficile/gg.png")
+mg = py.image.load("img/card/Difficile/mg.png")
+ng = py.image.load("img/card/Difficile/ng.png")
+pg = py.image.load("img/card/Difficile/pg.png")
+an = py.image.load("img/card/Difficile/an.png")
+bn = py.image.load("img/card/Difficile/bn.png")
+cn = py.image.load("img/card/Difficile/cn.png")
+dn = py.image.load("img/card/Difficile/dn.png")
+gn = py.image.load("img/card/Difficile/gn.png")
+mn = py.image.load("img/card/Difficile/mn.png")
+nn = py.image.load("img/card/Difficile/nn.png")
+pn = py.image.load("img/card/Difficile/pn.png")
+
+images = [aa,ba,ca,da,ga,ma,na,pa,ag,bg,cg,dg,gg,mg,ng,pg,an,bn,cn,dn,gn,mn,nn,pn]
+dim = [8,6]
+position = [[1,9,17,25,33,41],[2,10,18,26,34,42],[3,11,19,27,35,43],[4,12,20,28,36,44],[5,13,21,29,37,45],[6,14,22,30,38,46],[7,15,23,31,39,47],[8,16,24,32,40,48]]
+vals = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48]
+
+DstartW = 250
+DstartH = 51
+
+Dpos1 = py.Rect(DstartW,DstartH,DcardW,DcardH)
+Dpos2 = py.Rect(DstartW,DstartH+100,DcardW,DcardH)
+Dpos3 = py.Rect(DstartW,DstartH+200,DcardW,DcardH)
+Dpos4 = py.Rect(DstartW,DstartH+300,DcardW,DcardH)
+Dpos5 = py.Rect(DstartW+95,DstartH,DcardW,DcardH)
+Dpos6 = py.Rect(DstartW+95,DstartH+100,DcardW,DcardH)
+Dpos7 = py.Rect(DstartW+95,DstartH+200,DcardW,DcardH)
+Dpos8 = py.Rect(DstartW+95,DstartH+300,DcardW,DcardH)
+Dpos9 = py.Rect(DstartW+190,DstartH,DcardW,DcardH)
+Dpos10 = py.Rect(DstartW+190,DstartH+100,DcardW,DcardH)
+Dpos11 = py.Rect(DstartW+190,DstartH+200,DcardW,DcardH)
+Dpos12 = py.Rect(DstartW+190,DstartH+300,DcardW,DcardH)
+Dpos13 = py.Rect(DstartW+285,DstartH,DcardW,DcardH)
+Dpos14 = py.Rect(DstartW+285,DstartH+100,DcardW,DcardH)
+Dpos15 = py.Rect(DstartW+285,DstartH+200,DcardW,DcardH)
+Dpos16 = py.Rect(DstartW+285,DstartH+300,DcardW,DcardH)
+Dpos17 = py.Rect(DstartW+380,DstartH,DcardW,DcardH)
+Dpos18 = py.Rect(DstartW+380,DstartH+100,DcardW,DcardH)
+Dpos19 = py.Rect(DstartW+380,DstartH+200,DcardW,DcardH)
+Dpos20 = py.Rect(DstartW+380,DstartH+300,DcardW,DcardH)
+Dpos21 = py.Rect(DstartW+475,DstartH,DcardW,DcardH)
+Dpos22 = py.Rect(DstartW+475,DstartH+100,DcardW,DcardH)
+Dpos23 = py.Rect(DstartW+475,DstartH+200,DcardW,DcardH)
+Dpos24 = py.Rect(DstartW+475,DstartH+300,DcardW,DcardH)
+Dpos25 = py.Rect(DstartW+570,DstartH,DcardW,DcardH)
+Dpos26 = py.Rect(DstartW+570,DstartH+100,DcardW,DcardH)
+Dpos27 = py.Rect(DstartW+570,DstartH+200,DcardW,DcardH)
+Dpos28 = py.Rect(DstartW+570,DstartH+300,DcardW,DcardH)
+Dpos29 = py.Rect(DstartW+665,DstartH,DcardW,DcardH)
+Dpos30 = py.Rect(DstartW+665,DstartH+100,DcardW,DcardH)
+Dpos31 = py.Rect(DstartW+665,DstartH+200,DcardW,DcardH)
+Dpos32 = py.Rect(DstartW+665,DstartH+300,DcardW,DcardH)
+Dpos33 = py.Rect(DstartW,DstartH+400,DcardW,DcardH)
+Dpos34 = py.Rect(DstartW+95,DstartH+400,DcardW,DcardH)
+Dpos35 = py.Rect(DstartW+190,DstartH+400,DcardW,DcardH)
+Dpos36 = py.Rect(DstartW+285,DstartH+400,DcardW,DcardH)
+Dpos37 = py.Rect(DstartW+380,DstartH+400,DcardW,DcardH)
+Dpos38 = py.Rect(DstartW+475,DstartH+400,DcardW,DcardH)
+Dpos39 = py.Rect(DstartW+570,DstartH+400,DcardW,DcardH)
+Dpos40 = py.Rect(DstartW+665,DstartH+400,DcardW,DcardH)
+Dpos41 = py.Rect(DstartW,DstartH+500,DcardW,DcardH)
+Dpos42 = py.Rect(DstartW+95,DstartH+500,DcardW,DcardH)
+Dpos43 = py.Rect(DstartW+190,DstartH+500,DcardW,DcardH)
+Dpos44 = py.Rect(DstartW+285,DstartH+500,DcardW,DcardH)
+Dpos45 = py.Rect(DstartW+380,DstartH+500,DcardW,DcardH)
+Dpos46 = py.Rect(DstartW+475,DstartH+500,DcardW,DcardH)
+Dpos47 = py.Rect(DstartW+570,DstartH+500,DcardW,DcardH)
+Dpos48 = py.Rect(DstartW+665,DstartH+500,DcardW,DcardH)
