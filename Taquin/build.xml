@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="taquin" default="run" basedir=".">
+
+	<property name="src.dir" value="src"/>
+	<property name="doc.dir" value="doc"/>
+	<property name="build.dir" value="build"/>
+	<property name="jar.dir" value="dist"/>
+
+	<path id="classpath">
+		<pathelement location="${build.dir}"/>
+	</path>
+
+	<target name="clean" description="Cleaning of generated files">
+		<delete dir="${build.dir}"/>
+		<delete dir="${jar.dir}"/>
+		<mkdir dir="${basedir}/${build.dir}"/>
+		<mkdir dir="${basedir}/${jar.dir}"/>
+		<echo message="Cleaning completed."/>
+	</target>
+
+	<target name="compile" description="Classes compilation" depends="clean">
+		<javac srcdir="${src.dir}" destdir="${build.dir}" includeantruntime="false">
+			<classpath refid="classpath"/>
+		</javac>
+		<echo message="Compilation completed."/>
+	</target>
+
+	<target name="run" description="Execution" depends="compile, input-run-args">
+		<java classname="Main" fork="true">
+			<classpath refid="classpath"/>
+			<arg line="${width_arg}"/>
+			<arg line="${height_arg}"/>
+			<arg line="${interface_arg}"/>
+			<arg line="${images_arg}"/>
+		</java>
+	</target>
+
+	<target name="input-run-args" unless="args" description="prompts for command line arguments if necessary">
+		<input addProperty="width_arg" message="Type the desired argument for width (must be an integer) - optional if you don't use a graphic interface (default 3) :"/>
+		<input addProperty="height_arg" message="Type the desired argument for height (must be an integer) - optional if you don't use a graphic interface (default 3) :"/>
+		<input addProperty="interface_arg" message="Type the desired argument for the use (true) or not (false) of a graphic interface (must be a boolean) - optional (default false) :"/>
+		<input addProperty="images_arg" message="Type the desired argument for the use (true) or not (false) of images in the graphic interface (must be a boolean) - optional (default false) and useless if you don't use a graphic interface :"/>
+	</target>
+
+	<target name="packaging" description="Jar files creation" depends="compile">
+		 <jar destfile="${jar.dir}/taquin.jar" basedir="${build.dir}" manifest="${basedir}/Manifest.txt"/>
+		<echo message="Jar file creation completed."/>
+	</target>
+
+	<target name="javadoc" description="JavaDoc creation">
+		<javadoc sourcepath="${src.dir}" destdir="${doc.dir}">
+		<fileset dir="${src.dir}" defaultexcludes="yes">
+			<include name="**"/>
+		</fileset>
+		</javadoc>
+		<echo message="JavaDoc creation completed."/>
+	</target>
+
+</project>
