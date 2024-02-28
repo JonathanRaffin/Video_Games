@@ -1,0 +1,6 @@
+#this is the gitignore file
+
+.classpath
+.project
+dist
+bin

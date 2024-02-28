@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="hex" default="run" basedir=".">
+
+	<property name="app.name" value="hex"/>
+	<property name="javac.encoding" value="UTF-8"/>
+
+	<property name="build.dir" value="${basedir}/bin"/>
+	<property name="dist.dir" value="${basedir}/dist"/>
+	<property name="doc.dir" value="${basedir}/doc"/>
+	<property name="src.dir" value="${basedir}/src"/>
+
+	<!-- ====================== !!!  CAUTION  !!! ====================== -->
+    <!-- Change the 'value' field below to change the executed class -->
+    <property name="main.class" value="gui.Demo"/>
+    <!-- =============================================================== -->
+
+
+    <!-- ======================= Compile options ======================= -->
+  
+    <property name="compile.debug" value="true"/>
+    <property name="compile.deprecation" value="false"/>
+    <property name="compile.optimize" value="true"/>
+
+    <!-- ========================== Classpath ========================== -->
+
+	<path id="classpath">
+		<pathelement location="${build.dir}"/>
+	</path>
+
+    <!-- ======================== Clean  Target ======================== -->
+
+	<target name="clean" description="Cleaning of generated files">
+		<delete dir="${build.dir}"/>
+		<delete dir="${dist.dir}"/>
+		<mkdir dir="${basedir}/bin"/>
+		<mkdir dir="${basedir}/dist"/>
+		<echo message="Cleaning completed."/>
+	</target>
+
+    <!-- ======================= Compile  Target ======================= -->
+
+	<target name="compile" description="Compile Java sources" depends="clean">
+		<javac srcdir="${src.dir}" destdir="${build.dir}" debug="${compile.debug}" deprecation="${compile.deprecation}" optimize="${compile.optimize}" encoding="${javac.encoding}" includeantruntime="false" classpathref="classpath" />
+		<echo message="Compilation completed."/>
+	</target>
+
+    <!-- ========================= Dist Target ========================= -->
+
+	<target name="dist" description="Create binary distribution" depends="compile">
+		<jar destfile="${dist.dir}/${app.name}.jar" basedir="${build.dir}" manifest="${basedir}/.manifests/Manifest_hex.txt"/>
+		<echo message="Jar files creation completed"/>
+	</target>
+
+    <!-- ======================= Javadoc  Target ======================= -->
+
+	<target name="javadoc" depends="compile" description="Create Javadoc API documentation">
+		
+		<delete dir="${doc.home}"/>
+        <mkdir dir="${doc.home}"/>
+		
+		<javadoc sourcepath="${src.dir}" destdir="${doc.dir}" packagenames="*">
+			<fileset dir="${src.dir}" defaultexcludes="yes">
+				<include name="**"/>
+			</fileset>
+		</javadoc>
+
+		<echo message="JavaDoc creation completed."/>
+	</target>
+
+    <!-- ========================= Run  Target ========================= -->
+
+	<target name="run" description="Execution of the hex" depends="compile">
+		<java classname="${main.class}" fork="true">
+			<classpath refid="classpath"/>
+		</java>
+	</target>
+
+</project>
