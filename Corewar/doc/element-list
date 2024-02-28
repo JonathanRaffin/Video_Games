@@ -1,0 +1,13 @@
+unnamed package
+commands
+commands.ICWS88
+computer
+generator.crossover
+generator.crossover.arguments
+generator.matcher
+generator.population
+generator.score
+GUI
+GUI.control
+operations
+parser

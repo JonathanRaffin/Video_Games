@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="corewar" default="run-corewar" basedir=".">
+
+	<property name="src.dir" value="src"/>
+	<property name="doc.dir" value="doc"/>
+	<property name="build.dir" value="build"/>
+	<property name="jar.dir" value="jar"/>
+
+	<path id="classpath">
+		<pathelement location="${build.dir}"/>
+	</path>
+
+	<target name="clean" description="Cleaning of generated files">
+		<delete dir="${build.dir}"/>
+		<delete dir="${jar.dir}"/>
+		<mkdir dir="${basedir}/build"/>
+		<mkdir dir="${basedir}/jar"/>
+		<echo message="Cleaning completed."/>
+	</target>
+
+	<target name="compile" description="Classes compilation" depends="clean">
+		<javac srcdir="${src.dir}" destdir="${build.dir}" includeantruntime="false">
+			<classpath refid="classpath"/>
+		</javac>
+		<echo message="Compilation completed."/>
+	</target>
+
+	<target name="run-corewar" description="Execution of the CoreWar" depends="compile">
+		<java classname="Main_CoreWar" fork="true">
+			<classpath refid="classpath"/>
+		</java>
+	</target>
+
+	<target name="run-generation" description="Execution of warrior generation" depends="compile">
+		<java classname="Main_Generation" fork="true">
+			<classpath refid="classpath"/>
+		</java>
+	</target>
+
+	<target name="packaging-corewar" description="Jar file creation for corewar" depends="compile">
+		<jar destfile="${jar.dir}/corewar.jar" basedir="${build.dir}" manifest="${basedir}/.manifests/Manifest_CoreWar.txt"/>
+		<echo message="Jar file creation completed - CoreWar"/>
+	</target>
+
+	<target name="packaging-generation" description="Jar file creation for warrior generation" depends="compile">
+		<jar destfile="${jar.dir}/generation.jar" basedir="${build.dir}" manifest="${basedir}/.manifests/Manifest_Generation.txt"/>
+		<echo message="Jar file creation completed - Generation"/>
+	</target>
+
+	<target name="packaging" description="Jar files creation" depends="packaging-corewar, packaging-generation">
+		<echo message="Jar files creation completed"/>
+	</target>
+
+	<target name="javadoc" description="JavaDoc creation">
+		<javadoc sourcepath="${src.dir}" destdir="${doc.dir}">
+		<fileset dir="${src.dir}" defaultexcludes="yes">
+			<include name="**"/>
+		</fileset>
+		</javadoc>
+		<echo message="JavaDoc creation completed."/>
+	</target>
+
+</project>
